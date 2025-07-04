@@ -18,8 +18,12 @@ export default function FilterPanel({
   useEffect(() => {
     fetch('https://dummyjson.com/products/categories')
       .then(res => res.json())
-      .then(setCategories)
+      .then(data => {
+        console.log("Fetched categories:", data)
+        setCategories(data)
+      })
   }, [])
+
 
   return (
     <div className="mb-4 space-y-2">
