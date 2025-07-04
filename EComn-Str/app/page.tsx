@@ -10,6 +10,8 @@ interface Product {
   category: string
   rating: number
   stock: number
+  thumbnail: string  
+  price: number      
 }
 
 export default function Home() {
