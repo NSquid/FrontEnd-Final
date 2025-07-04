@@ -36,7 +36,7 @@ export default function FilterPanel({
 
       <select onChange={(e) => onCategory(e.target.value)} className="border p-2 w-full rounded">
         <option value="">All Categories</option>
-        {categories.map((cat, idx) => (
+        {categories.map((cat) => (
           <option key={cat} value={cat}>
             {cat}
           </option>
