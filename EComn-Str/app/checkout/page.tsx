@@ -2,13 +2,20 @@
 import { useStore } from '@/context/StoreContext'
 import { useRouter } from 'next/navigation'
 
+interface CartItem {
+  id: string
+  title: string
+  price: number
+}
+
 export default function CheckoutPage() {
   const { cart, saveHistory, setCart } = useStore()
-  const total = cart.reduce((sum: number, item: any) => sum + item.price, 0)
+  const typedCart = cart as CartItem[] // type assertion
+  const total = typedCart.reduce((sum, item) => sum + item.price, 0)
   const router = useRouter()
 
   const handleCheckout = () => {
-    if (cart.length === 0) return alert("Your cart is empty.")
+    if (typedCart.length === 0) return alert("Your cart is empty.")
     saveHistory()
     setCart([])
     alert('Checkout successful! 🧾')
@@ -19,8 +26,8 @@ export default function CheckoutPage() {
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Checkout</h1>
       <ul>
-        {cart.map((item: any) => (
-          <li key={item.id + '-' + Math.random()}>{item.title} - ${item.price}</li>
+        {typedCart.map((item) => (
+          <li key={item.id}>{item.title} - ${item.price}</li>
         ))}
       </ul>
       <p className="mt-4 font-semibold">Total: ${total}</p>

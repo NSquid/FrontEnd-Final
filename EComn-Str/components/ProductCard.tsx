@@ -2,7 +2,14 @@
 import { useStore } from '@/context/StoreContext'
 import Link from 'next/link'
 
-export default function ProductCard({ product }: { product: any }) {
+interface Product {
+  id: string
+  title: string
+  price: number
+  thumbnail: string
+}
+
+export default function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useStore()
 
   return (

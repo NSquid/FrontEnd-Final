@@ -36,14 +36,13 @@ export default function FilterPanel({
 
       <select onChange={(e) => onCategory(e.target.value)} className="border p-2 w-full rounded">
         <option value="">All Categories</option>
-        {categories.map((cat: any, idx: number) => (
-        <option key={cat.slug ?? idx} value={cat.slug ?? cat.name}>
-            {cat.name ?? cat}
-        </option>
+        {categories.map((cat, idx) => (
+          <option key={cat} value={cat}>
+            {cat}
+          </option>
         ))}
-
-
       </select>
+
 
       <select onChange={(e) => onRating(Number(e.target.value))} className="border p-2 w-full rounded">
         <option value={0}>All Ratings</option>

@@ -1,13 +1,12 @@
 
 'use client'
-import { useTheme } from '@/context/ThemeContext'
 import { useStore } from '@/context/StoreContext'
 import Link from 'next/link'
 
 
 export default function Navbar() {
   const { cart } = useStore()
-  const { theme, toggleTheme } = useTheme()
+
 
   return (
     <nav className="flex justify-between items-center p-4 bg-gray-100 dark:bg-gray-800 text-black dark:text-white shadow">
